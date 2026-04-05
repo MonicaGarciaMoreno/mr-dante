@@ -1,6 +1,6 @@
 # 🐾 Tienda en Línea Señor Dante
 
-Proyecto académico desarrollado como parte del programa **Tecnología en Análisis y Desarrollo de Software**.
+Proyecto académico desarrollado como parte del programa **Tecnología en Análisis y Desarrollo de Software** del **SENA**.
 
 La aplicación consiste en una tienda en línea para la visualización y gestión de productos para mascotas, permitiendo a los usuarios explorar el catálogo y a los administradores gestionar los productos disponibles.
 
@@ -96,7 +96,7 @@ Para ejecutar el proyecto en un entorno local es necesario contar con las siguie
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/MonicaGarciaMoreno/mr-dante.git
 ```
 
 ### 2️⃣ Acceder al directorio del proyecto
