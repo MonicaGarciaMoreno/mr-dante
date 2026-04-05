@@ -1,6 +1,6 @@
 # 🐾 Tienda en Línea Señor Dante
 
-Proyecto académico desarrollado como parte de la evidencia **GA8-220501096-AA1-EV02 – Módulos integrados** del programa **Tecnología en Análisis y Desarrollo de Software**.
+Proyecto académico desarrollado como parte del programa **Tecnología en Análisis y Desarrollo de Software**.
 
 La aplicación consiste en una tienda en línea para la visualización y gestión de productos para mascotas, permitiendo a los usuarios explorar el catálogo y a los administradores gestionar los productos disponibles.
 
@@ -82,17 +82,68 @@ Las tablas principales del negocio son:
 El carrito de compras se gestiona mediante **sesiones del sistema**.
 
 ---
+---
 
-# ▶️ Ejecución del proyecto
+## ▶️ Ejecución del proyecto
 
-Para ejecutar el proyecto en un entorno local se requiere tener instalado:
+Para ejecutar el proyecto en un entorno local es necesario contar con las siguientes herramientas instaladas:
 
 - PHP
 - Composer
-- XAMPP o servidor con MySQL
+- XAMPP o cualquier servidor que permita ejecutar MySQL
 - Laravel
 
 ### 1️⃣ Clonar el repositorio
 
 ```bash
 git clone URL_DEL_REPOSITORIO
+```
+
+### 2️⃣ Acceder al directorio del proyecto
+
+```bash
+cd senor-dante
+```
+
+### 3️⃣ Instalar dependencias
+
+```bash
+composer install
+```
+
+### 4️⃣ Configurar el archivo de entorno
+
+Copiar el archivo de configuración de ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+Luego editar el archivo `.env` y configurar los datos de conexión a la base de datos según el entorno local.
+
+### 5️⃣ Ejecutar migraciones
+
+Este comando creará las tablas necesarias en la base de datos:
+
+```bash
+php artisan migrate
+```
+
+### 6️⃣ Iniciar el servidor de desarrollo
+
+Para ejecutar la aplicación en el entorno local se utiliza el servidor integrado de Laravel:
+
+```bash
+php artisan serve
+```
+
+### 7️⃣ Acceder a la aplicación
+
+Una vez iniciado el servidor, abrir el navegador y dirigirse a:
+
+```
+http://127.0.0.1:8000/
+```
+
+---
+
