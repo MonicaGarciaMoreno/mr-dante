@@ -1,59 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🐾 Tienda en Línea Señor Dante
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyecto académico desarrollado como parte del programa **Tecnología en Análisis y Desarrollo de Software** del **SENA**.
 
-## About Laravel
+La aplicación consiste en una tienda en línea para la visualización y gestión de productos para mascotas, permitiendo a los usuarios explorar el catálogo y a los administradores gestionar los productos disponibles.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 📌 Descripción del proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+La tienda **Señor Dante** es una aplicación web desarrollada con el framework **Laravel**, que permite visualizar un catálogo de productos para mascotas, gestionar productos desde un panel administrativo y mantener un carrito de compras utilizando sesiones.
 
-## Learning Laravel
+El sistema sigue el patrón de arquitectura **MVC (Modelo – Vista – Controlador)** que facilita la organización del código y su mantenimiento.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 🚀 Tecnologías utilizadas
 
-## Laravel Sponsors
+Backend
+- PHP
+- Laravel
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Frontend
+- Blade (motor de plantillas de Laravel)
+- HTML
+- CSS
+- Bootstrap
 
-### Premium Partners
+Base de datos
+- MySQL
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Entorno de desarrollo
+- XAMPP
 
-## Contributing
+Control de versiones
+- Git
+- GitHub
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+# ⚙️ Funcionalidades implementadas
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Cliente
 
-## Security Vulnerabilities
+- Visualizar productos
+- Buscar productos
+- Filtrar por tipo de mascota (perro / gato)
+- Filtrar por categoría
+- Ver detalle de producto
+- Agregar productos al carrito
+- Modificar cantidad en el carrito
+- Eliminar productos del carrito
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usuario
 
-## License
+- Registro de usuario
+- Inicio de sesión
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Administrador
+
+- Crear productos
+- Editar productos
+- Eliminar productos
+
+---
+
+# 🗄️ Modelo de base de datos
+
+Tablas principales del sistema:
+
+- `users`
+- `categories`
+- `products`
+- `migrations`
+- `password_reset_tokens`
+
+Las tablas principales del negocio son:
+
+- **categories**
+- **products**
+
+El carrito de compras se gestiona mediante **sesiones del sistema**.
+
+---
+---
+
+## ▶️ Ejecución del proyecto
+
+Para ejecutar el proyecto en un entorno local es necesario contar con las siguientes herramientas instaladas:
+
+- PHP
+- Composer
+- XAMPP o cualquier servidor que permita ejecutar MySQL
+- Laravel
+
+### 1️⃣ Clonar el repositorio
+
+```bash
+git clone https://github.com/MonicaGarciaMoreno/mr-dante.git
+```
+
+### 2️⃣ Acceder al directorio del proyecto
+
+```bash
+cd senor-dante
+```
+
+### 3️⃣ Instalar dependencias
+
+```bash
+composer install
+```
+
+### 4️⃣ Configurar el archivo de entorno
+
+Copiar el archivo de configuración de ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+Luego editar el archivo `.env` y configurar los datos de conexión a la base de datos según el entorno local.
+
+### 5️⃣ Ejecutar migraciones
+
+Este comando creará las tablas necesarias en la base de datos:
+
+```bash
+php artisan migrate
+```
+
+### 6️⃣ Iniciar el servidor de desarrollo
+
+Para ejecutar la aplicación en el entorno local se utiliza el servidor integrado de Laravel:
+
+```bash
+php artisan serve
+```
+
+### 7️⃣ Acceder a la aplicación
+
+Una vez iniciado el servidor, abrir el navegador y dirigirse a:
+
+```
+http://127.0.0.1:8000/
+```
+
+---
+
