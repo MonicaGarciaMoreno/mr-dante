@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('home');
-});
+// HOME con selección de mascota
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/products', [ProductController::class, 'index']);
+// HOME cuando el usuario ya eligió perro o gato
+Route::get('/home/{pet}', [HomeController::class, 'index']);
+
+// PRODUCTOS filtrados
+Route::get('/productos/{pet}/{category}', [ProductController::class, 'index']);

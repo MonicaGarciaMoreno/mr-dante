@@ -2,38 +2,50 @@
 
 @section('content')
 
-<section class="home-categorias">
+{{-- 🐶🐱 Selección inicial --}}
+@if(!$pet)
 
-    <h2>Categorías</h2>
+@endif
 
-    <div class="categorias-grid">
 
-        <div class="categoria-card">
+{{-- 🧱 Categorías --}}
+@if($pet)
+
+<section class="cfade-in">
+
+    <h2>Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h2>
+
+    <div class="categorias-grid fade-in">
+
+        <a href="{{ url('/productos/' . $pet . '/1') }}" class="categoria-card">
             <img src="/images/categories/food-category.png">
             <p>Alimentos</p>
-        </div>
+        </a>
 
-        <div class="categoria-card">
+        <a href="{{ url('/productos/' . $pet . '/2') }}" class="categoria-card">
             <img src="/images/categories/toilet-category.png">
             <p>Aseo</p>
-        </div>
+        </a>
 
-        <div class="categoria-card">
+        <a href="{{ url('/productos/' . $pet . '/3') }}" class="categoria-card">
             <img src="/images/categories/accessories-category.png">
             <p>Accesorios</p>
-        </div>
+        </a>
 
-        <div class="categoria-card">
+        <a href="{{ url('/productos/' . $pet . '/4') }}" class="categoria-card">
             <img src="/images/categories/medicine-category.png">
             <p>Medicinas</p>
-        </div>
+        </a>
 
     </div>
 
 </section>
 
+@endif
 
-<section class="home-destacados">
+
+{{-- ⭐ Productos destacados --}}
+<section class="home-destacados fade-in">
 
     <h2>Productos destacados</h2>
 
@@ -43,27 +55,29 @@
             <img src="/images/products/cat-food.webp">
             <p>Comida para gato Hills<br>Optimal Care Adulto</p>
             <p class="precio">$129.700</p>
-            <button>Agregar al carrito</button>
+            <button>Ver producto</button>
         </div>
 
         <div class="producto-card">
             <img src="/images/products/dog-food.webp">
             <p>Comida Perro Hills Ob<br>Adulto Razas Medianas</p>
             <p class="precio">$137.800</p>
-            <button>Agregar al carrito</button>
+            <button>Ver producto</button>
         </div>
 
         <div class="producto-card">
             <img src="/images/products/cat-snack.webp">
             <p>Agility Gold Gatitos</p>
             <p class="precio">$17.400</p>
-            <button>Agregar al carrito</button>
+            <button>Ver producto</button>
         </div>
 
     </div>
 
 </section>
 
+
+{{-- 📝 Blog --}}
 <section class="home-blog">
 
     <div class="blog-header">
@@ -79,7 +93,5 @@
     </div>
 
 </section>
-
-
 
 @endsection

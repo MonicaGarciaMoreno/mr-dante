@@ -2,24 +2,50 @@
 
 @section('content')
 
-<h1>Productos</h1>
+@php
+$categories = [
+1 => 'Alimentos',
+2 => 'Aseo',
+3 => 'Accesorios',
+4 => 'Medicinas'
+];
+@endphp
 
-@foreach ($products as $product)
+<h1 class="categoria-titulo">
+    {{ $categories[$category] ?? 'Productos' }}
+    para {{ $pet == 'dog' ? 'perros 🐶' : 'gatos 🐱' }}
+</h1>
 
-    <h2>{{ $product->name }}</h2>
+<div class="productos-grid">
 
-    <img src="{{ asset('images/products/' . $product->image) }}" width="200">
+    @forelse ($products as $product)
 
-    <p>{{ $product->description }}</p>
+    <div class="producto-card">
 
-    <strong>Tamaños disponibles:</strong>
+        <img src="{{ asset('images/products/' . $product->image) }}">
 
-    <ul>
-        @foreach ($product->variants as $variant)
+        <h3>{{ $product->name }}</h3>
+
+        <p>{{ $product->description }}</p>
+
+        <strong>Tamaños:</strong>
+
+        <ul>
+            @foreach ($product->variants as $variant)
             <li>{{ $variant->size }}</li>
-        @endforeach
-    </ul>
+            @endforeach
+        </ul>
 
-@endforeach
+        <button>Ver producto</button>
+
+    </div>
+
+    @empty
+
+    <p>No hay productos disponibles en esta categoría.</p>
+
+    @endforelse
+
+</div>
 
 @endsection
