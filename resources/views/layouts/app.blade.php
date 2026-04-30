@@ -17,6 +17,11 @@
             <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
         </a>
 
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar productos...">
+            <div id="search-results" class="search-results"></div>
+        </div>
+
         <div class="nav-right">
             <a href="#" class="login-btn">Iniciar sesión</a>
             <span class="cart">🛒</span>
@@ -113,6 +118,45 @@
         </div>
 
     </footer>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('keyup', async function() {
+            const query = this.value.trim();
+
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            const response = await fetch(`/buscar-productos?query=${query}`);
+            const products = await response.json();
+
+            if (products.length === 0) {
+                searchResults.style.display = 'none';
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            searchResults.innerHTML = products.map(product => `
+            <a href="/producto/${product.id}" class="search-item">
+                <img src="/images/products/${product.image}" alt="${product.name}">
+                <span>${product.name}</span>
+            </a>
+        `).join('');
+
+            searchResults.style.display = 'block';
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!document.querySelector('.search-bar').contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    </script>
 
 
 </body>

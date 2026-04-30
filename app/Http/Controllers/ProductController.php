@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,5 +15,16 @@ class ProductController extends Controller
             ->get();
 
         return view('products.index', compact('products', 'pet', 'category'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('query');
+
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+            ->take(5)
+            ->get(['id', 'name', 'image']);
+
+        return response()->json($products);
     }
 }

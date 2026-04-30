@@ -12,3 +12,6 @@ Route::get('/home/{pet}', [HomeController::class, 'index']);
 
 // PRODUCTOS filtrados
 Route::get('/productos/{pet}/{category}', [ProductController::class, 'index']);
+
+// Filtro predictivo
+Route::get('/buscar-productos', [ProductController::class, 'search'])->name('products.search');
