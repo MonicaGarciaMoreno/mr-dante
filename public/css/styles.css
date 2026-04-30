@@ -142,6 +142,16 @@
     gap: 30px;
 }
 
+.categorias-grid a {
+    text-decoration: none;
+    color: #2d0c57;
+    font-weight: 500;
+}
+
+.categorias-grid a:hover {
+    text-decoration: underline;
+}
+
 .categoria-card {
     background: white;
     padding: 20px;
@@ -294,7 +304,7 @@
     }
 }
 
-/* ESTILOS DE LA PANTALLA CATEGORIAS */
+/* PANTALLA CATEGORIAS */
 
 .productos-grid {
     display: grid;
@@ -318,7 +328,6 @@
 .categoria-titulo {
     text-align: center;
 }
-
 
 body {
     margin: 0;

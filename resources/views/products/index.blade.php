@@ -11,10 +11,10 @@ $categories = [
 ];
 @endphp
 
-<h1 class="categoria-titulo">
+<h2 class="categoria-titulo">
     {{ $categories[$category] ?? 'Productos' }}
     para {{ $pet == 'dog' ? 'perros 🐶' : 'gatos 🐱' }}
-</h1>
+</h2>
 
 <div class="productos-grid">
 

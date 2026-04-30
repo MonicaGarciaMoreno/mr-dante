@@ -13,7 +13,7 @@
 
 <section class="cfade-in">
 
-    <h2>Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h2>
+    <h2 class="categoria-titulo">Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h2>
 
     <div class="categorias-grid fade-in">
 
@@ -50,27 +50,23 @@
     <h2>Productos destacados</h2>
 
     <div class="productos-grid">
-
+        @foreach($featuredProducts as $product)
         <div class="producto-card">
-            <img src="/images/products/cat-food.webp">
-            <p>Comida para gato Hills<br>Optimal Care Adulto</p>
-            <p class="precio">$129.700</p>
+            <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}">
+
+            <p>{{ $product->name }}</p>
+
+            <p class="precio">
+                <span style="text-decoration: line-through; color: #888;">
+                    ${{ number_format($product->price, 0, ',', '.') }}
+                </span>
+                <br>
+                ${{ number_format($product->sale_price, 0, ',', '.') }}
+            </p>
+
             <button>Ver producto</button>
         </div>
-
-        <div class="producto-card">
-            <img src="/images/products/dog-food.webp">
-            <p>Comida Perro Hills Ob<br>Adulto Razas Medianas</p>
-            <p class="precio">$137.800</p>
-            <button>Ver producto</button>
-        </div>
-
-        <div class="producto-card">
-            <img src="/images/products/cat-snack.webp">
-            <p>Agility Gold Gatitos</p>
-            <p class="precio">$17.400</p>
-            <button>Ver producto</button>
-        </div>
+        @endforeach
 
     </div>
 

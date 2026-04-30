@@ -13,14 +13,14 @@
 
     <!-- NAVBAR -->
     <div class="navbar">
-
-        <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
+        </a>
 
         <div class="nav-right">
             <a href="#" class="login-btn">Iniciar sesión</a>
             <span class="cart">🛒</span>
         </div>
-
     </div>
 
 
