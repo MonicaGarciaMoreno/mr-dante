@@ -12,47 +12,71 @@ class ProductVariantSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('product_variants')->insert([
+        $dogFood = DB::table('products')->where('name', 'Croquetas Premium Perro')->first();
+        $catFood = DB::table('products')->where('name', 'Croquetas Premium Gato')->first();
 
-            [
-                'product_id' => 1,
-                'size' => '1kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'product_id' => 1,
-                'size' => '2kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'product_id' => 1,
-                'size' => '5kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+        if ($dogFood) {
+            DB::table('product_variants')->insert([
+                [
+                    'product_id' => $dogFood->id,
+                    'label' => '1 kg',
+                    'price' => 129700,
+                    'sale_price' => 109900,
+                    'stock' => 10,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'product_id' => $dogFood->id,
+                    'label' => '3 kg',
+                    'price' => 249700,
+                    'sale_price' => 219900,
+                    'stock' => 8,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'product_id' => $dogFood->id,
+                    'label' => '6 kg',
+                    'price' => 429700,
+                    'sale_price' => 389900,
+                    'stock' => 5,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+        }
 
-            [
-                'product_id' => 2,
-                'size' => '1kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'product_id' => 2,
-                'size' => '2kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'product_id' => 2,
-                'size' => '5kg',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-        ]);
+        if ($catFood) {
+            DB::table('product_variants')->insert([
+                [
+                    'product_id' => $catFood->id,
+                    'label' => '1 kg',
+                    'price' => 117900,
+                    'sale_price' => 99900,
+                    'stock' => 10,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'product_id' => $catFood->id,
+                    'label' => '3 kg',
+                    'price' => 229900,
+                    'sale_price' => 199900,
+                    'stock' => 8,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'product_id' => $catFood->id,
+                    'label' => '6 kg',
+                    'price' => 399900,
+                    'sale_price' => 359900,
+                    'stock' => 5,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+        }
     }
 }
-

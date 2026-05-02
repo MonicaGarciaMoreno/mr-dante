@@ -36,7 +36,9 @@ $categories = [
             @endforeach
         </ul>
 
-        <button>Ver producto</button>
+        <button onclick="window.location.href='/producto/{{ $product->id }}'">
+            Ver producto
+        </button>
 
     </div>
 

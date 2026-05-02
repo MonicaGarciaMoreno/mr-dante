@@ -27,4 +27,11 @@ class ProductController extends Controller
 
         return response()->json($products);
     }
+
+    public function show($id)
+    {
+        $product = Product::with('variants')->findOrFail($id);
+
+        return view('products.show', compact('product'));
+    }
 }

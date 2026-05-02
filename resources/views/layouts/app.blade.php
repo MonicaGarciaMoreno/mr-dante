@@ -95,7 +95,9 @@
         <div class="footer-container">
 
             <div class="footer-logo">
-                <img src="{{ asset('images/paw-footer.png') }}" alt="paw">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('images/paw-footer.png') }}" alt="paw">
+                </a>
             </div>
 
             <div class="footer-contact">

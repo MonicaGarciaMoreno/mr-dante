@@ -11,11 +11,11 @@
 {{-- 🧱 Categorías --}}
 @if($pet)
 
-<section class="cfade-in">
+<section class="fade-in">
 
     <h2 class="categoria-titulo">Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h2>
 
-    <div class="categorias-grid fade-in">
+    <div class="categorias-grid">
 
         <a href="{{ url('/productos/' . $pet . '/1') }}" class="categoria-card">
             <img src="/images/categories/food-category.png">
@@ -64,7 +64,9 @@
                 ${{ number_format($product->sale_price, 0, ',', '.') }}
             </p>
 
-            <button>Ver producto</button>
+            <button onclick="window.location.href='/producto/{{ $product->id }}'">
+                Ver producto
+            </button>
         </div>
         @endforeach
 

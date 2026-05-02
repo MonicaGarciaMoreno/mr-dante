@@ -8,7 +8,16 @@ class ProductVariant extends Model
 {
     protected $fillable = [
         'product_id',
-        'size'
+        'label',
+        'price',
+        'sale_price',
+        'stock'
+    ];
+
+    protected $casts = [
+        'price' => 'decimal:2',
+        'sale_price' => 'decimal:2',
+        'stock' => 'integer',
     ];
 
     public function product()
@@ -16,4 +25,3 @@ class ProductVariant extends Model
         return $this->belongsTo(Product::class);
     }
 }
-

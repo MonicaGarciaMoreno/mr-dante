@@ -415,3 +415,168 @@ h3 {
 p {
     font-weight: 400;
 }
+
+
+/* DETALLE PRODUCTO */
+
+.detalle-producto-container {
+    padding: 40px 8%;
+}
+
+.detalle-producto-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.detalle-producto-img {
+    background: #f8f8f8;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detalle-producto-img img {
+    width: 100%;
+    max-width: 420px;
+    object-fit: contain;
+}
+
+.detalle-producto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.detalle-categoria {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.detalle-producto-info h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    color: #2d0c57;
+    margin: 0;
+}
+
+.detalle-precio {
+    font-size: 34px;
+    font-weight: 700;
+    color: #2d0c57;
+    margin: 0;
+}
+
+.detalle-tamano-label {
+    font-size: 15px;
+    color: #444;
+    margin: 0;
+}
+
+.detalle-tamano-label span {
+    font-weight: 600;
+}
+
+.detalle-variantes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.size-chip {
+    border: 1px solid #cfcfcf;
+    background: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.size-chip:hover {
+    border-color: #8e79c6;
+    color: #2d0c57;
+}
+
+.detalle-compra {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+.cantidad-control button {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color: #2d0c57;
+}
+
+.cantidad-control span {
+    font-weight: 600;
+    min-width: 10px;
+    text-align: center;
+}
+
+.btn-comprar {
+    background: #2d0c57;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-comprar:hover {
+    background: #1e083b;
+}
+
+.detalle-descripcion-box {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.detalle-descripcion-box h3 {
+    margin-bottom: 10px;
+    color: #2d0c57;
+}
+
+.detalle-descripcion-box p {
+    line-height: 1.7;
+    color: #444;
+    max-width: 95%;
+}
+
+.btn-volver {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #2d0c57;
+    font-weight: 500;
+}
+
+.btn-volver:hover {
+    text-decoration: underline;
+}
+
+.size-chip.active {
+    background: #2d0c57;
+    color: white;
+    border-color: #2d0c57;
+}
