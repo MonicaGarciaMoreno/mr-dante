@@ -1,36 +1,246 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="es">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>Señor Dante</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <link rel="icon" href="{{ asset('images/logo-cat.png') }}" type="image/png">
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    {{-- Estilos --}}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    {{-- Fuente --}}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {{-- Vite --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
+        </a>
+
+        <!-- BUSCADOR -->
+        <div class="search-bar">
+
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Buscar productos...">
+
+            <div id="search-results" class="search-results"></div>
+
         </div>
-    </body>
+
+        <!-- BOTONES DERECHA -->
+        <div class="nav-right">
+
+            @guest
+            <a href="{{ route('login') }}" class="login-btn">
+                Iniciar sesión
+            </a>
+
+            <a href="{{ route('register') }}" class="login-btn">
+                Registrarse
+            </a>
+            @endguest
+
+            @auth
+            <a href="{{ route('dashboard') }}" class="login-btn">
+                Mi cuenta
+            </a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <button type="submit" class="login-btn">
+                    Cerrar sesión
+                </button>
+            </form>
+            @endauth
+
+            <span class="cart">🛒</span>
+
+        </div>
+
+    </div>
+
+    <!-- BANNER -->
+    <div class="banner">
+
+        <div class="carousel">
+
+            <div class="slide">
+
+                <img src="{{ asset('images/cat-banner.png') }}" alt="gato">
+
+                <div class="banner-text">
+                    <h1>SEÑOR DANTE</h1>
+                    <p>¡Todo lo que necesita tu mascota!</p>
+                </div>
+
+            </div>
+
+            <div class="slide">
+
+                <img src="{{ asset('images/payment-method.png') }}" alt="pago">
+
+                <div class="banner-text">
+                    <h1>Paga como prefieras</h1>
+                    <p>Paga en línea o contraentrega al recibir tu pedido</p>
+                </div>
+
+            </div>
+
+            <div class="slide">
+
+                <img src="{{ asset('images/fast-delivery.png') }}" alt="domicilios">
+
+                <div class="banner-text">
+                    <h1>Domicilios en Cali</h1>
+                    <p>Enviamos a toda la ciudad</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CATEGORÍAS -->
+    <div class="categories">
+
+        <a href="{{ url('/') }}">
+            Inicio 🏠
+        </a>
+
+        <a href="{{ url('/home/dog') }}">
+            Para tu perro 🐶
+        </a>
+
+        <a href="{{ url('/home/cat') }}">
+            Para tu gato 🐱
+        </a>
+
+    </div>
+
+    <!-- CONTENIDO -->
+    <div style="padding:40px">
+
+        @yield('content')
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('images/paw-footer.png') }}" alt="paw">
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3>CONTACTO</h3>
+
+                <p>Email: contacto@mrdante.com</p>
+
+                <p>Teléfono: +57 300 123 4567</p>
+
+                <p>Dirección: Calle 59C # 56-71 / Cali, Valle del Cauca</p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>ENLACES ÚTILES</h3>
+
+                <p>Políticas de privacidad</p>
+
+                <p>Políticas de envío</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Señor Dante. Todos los derechos reservados.
+        </div>
+
+    </footer>
+
+    <!-- BUSCADOR PREDICTIVO -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        if (searchInput) {
+
+            searchInput.addEventListener('keyup', async function() {
+
+                const query = this.value.trim();
+
+                if (query.length < 2) {
+
+                    searchResults.style.display = 'none';
+                    searchResults.innerHTML = '';
+
+                    return;
+                }
+
+                const response = await fetch(`/buscar-productos?query=${query}`);
+
+                const products = await response.json();
+
+                if (products.length === 0) {
+
+                    searchResults.style.display = 'none';
+                    searchResults.innerHTML = '';
+
+                    return;
+                }
+
+                searchResults.innerHTML = products.map(product => `
+                    <a href="/producto/${product.id}" class="search-item">
+
+                        <img src="/images/products/${product.image}" alt="${product.name}">
+
+                        <span>${product.name}</span>
+
+                    </a>
+                `).join('');
+
+                searchResults.style.display = 'block';
+
+            });
+
+            document.addEventListener('click', function(e) {
+
+                if (!document.querySelector('.search-bar').contains(e.target)) {
+
+                    searchResults.style.display = 'none';
+
+                }
+
+            });
+
+        }
+    </script>
+
+</body>
+
 </html>

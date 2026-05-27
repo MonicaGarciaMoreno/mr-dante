@@ -1,32 +1,63 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| HOME (público)
+|--------------------------------------------------------------------------
+*/
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/home/{pet}', [HomeController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| PRODUCTOS
+|--------------------------------------------------------------------------
+*/
+Route::get('/productos/{pet}/{category}', [ProductController::class, 'index']);
+
+Route::get('/producto/{id}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/buscar-productos', [ProductController::class, 'search'])->name('products.search');
+
+/*
+|--------------------------------------------------------------------------
+| DASHBOARD (auth)
+|--------------------------------------------------------------------------
+*/
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+/*
+|--------------------------------------------------------------------------
+| PROFILE (auth)
+|--------------------------------------------------------------------------
+*/
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| ADMIN
 |--------------------------------------------------------------------------
 */
-
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/dashboard', function () {
-        return 'Bienvenida admin de Mr. Dante 😌';
+        return view('admin.dashboard');
     });
 });
 
