@@ -64,7 +64,7 @@
 .login-btn {
     background: #2d0c57;
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 6px;
     text-decoration: none;
     font-size: 14px;
@@ -309,6 +309,7 @@
 .blog-icon {
     width: 140px;
     margin-bottom: 10px;
+    margin: auto;
 }
 
 .blog-subtitulo {
@@ -579,4 +580,25 @@ p {
     background: #2d0c57;
     color: white;
     border-color: #2d0c57;
+}
+
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.auth-btn {
+    background: #2d0c57;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.auth-btn:hover {
+    opacity: 0.9;
 }

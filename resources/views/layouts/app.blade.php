@@ -25,9 +25,19 @@
     <!-- NAVBAR -->
     <div class="navbar">
 
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
-        </a>
+        <div class="brand">
+
+            <a href="{{ url('/') }}" class="brand-link">
+
+                <img src="{{ asset('images/logo-cat.png') }}" alt="logo">
+
+                <span class="brand-name">
+                    Señor Dante
+                </span>
+
+            </a>
+
+        </div>
 
         <!-- BUSCADOR -->
         <div class="search-bar">
@@ -157,7 +167,7 @@
 
                 <h3>CONTACTO</h3>
 
-                <p>Email: contacto@mrdante.com</p>
+                <p>Correo electrónico: contacto@mrdante.com</p>
 
                 <p>Teléfono: +57 300 123 4567</p>
 
