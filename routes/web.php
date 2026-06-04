@@ -59,6 +59,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     });
+
+    Route::resource(
+        'admin/products',
+        \App\Http\Controllers\Admin\ProductController::class
+    );
 });
 
 require __DIR__ . '/auth.php';

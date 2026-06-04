@@ -31,7 +31,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'pet_type' => 'required|in:dog,cat',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|string|max:255',
+        ]);
+
+        Product::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
+            'pet_type' => $validated['pet_type'],
+            'category_id' => $validated['category_id'],
+            'image' => $validated['image'] ?? null,
+            'is_featured' => $request->has('is_featured'),
+
+            'price' => 0,
+            'sale_price' => null,
+        ]);
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Producto creado correctamente.');
     }
 
     /**
@@ -55,7 +77,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'pet_type' => 'required|in:dog,cat',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|string|max:255',
+        ]);
+
+        $product->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
+            'pet_type' => $validated['pet_type'],
+            'category_id' => $validated['category_id'],
+            'image' => $validated['image'] ?? null,
+            'is_featured' => $request->has('is_featured'),
+        ]);
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Producto actualizado correctamente.');
     }
 
     /**
@@ -63,6 +104,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()
+            ->route('products.index')
+            ->with('success', 'Producto eliminado correctamente.');
     }
 }
