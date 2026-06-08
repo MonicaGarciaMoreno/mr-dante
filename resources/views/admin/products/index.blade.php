@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <h1>Productos - Admin Señor Dante 😌</h1>
 
 <a href="{{ route('products.create') }}">
@@ -8,7 +12,7 @@
 
 @forelse($products as $product)
 
-<div style="margin-bottom: 20px;">
+<div style="margin-bottom:20px;">
 
     <h2>{{ $product->name }}</h2>
 
@@ -25,9 +29,11 @@
     </p>
 
     @if($product->image)
+
     <img
         src="{{ asset('images/products/' . $product->image) }}"
         width="120">
+
     @endif
 
     <br><br>
@@ -65,3 +71,5 @@
 <p>No hay productos registrados.</p>
 
 @endforelse
+
+@endsection
