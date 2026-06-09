@@ -211,11 +211,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    justify-items: center;
+    text-align: center;
 }
 
 .categorias-grid a {
     text-decoration: none;
-    color: #2d0c57;
     font-weight: 500;
 }
 
@@ -241,7 +242,6 @@
 
 .home-categorias a {
     text-decoration: none;
-    color: #2d0c57;
     font-weight: 500;
 }
 
@@ -601,4 +601,236 @@ p {
 
 .auth-btn:hover {
     opacity: 0.9;
+}
+
+/* FORMULARIOS DEL ADMINISTRADOR */
+
+.admin-form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group.full {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2d0c57;
+    font-size: 14px;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.admin-form textarea {
+    resize: none;
+}
+
+.form-group.checkbox {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.form-group.checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #2d0c57;
+    cursor: pointer;
+}
+
+.form-group.checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #1f6f3d;
+}
+
+.admin-form button {
+    background: #2d0c57;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: auto;
+    align-self: center;
+    transition: 0.2s ease;
+}
+
+.admin-form button:hover {
+    opacity: 0.9;
+
+}
+
+/* ==========================
+   ADMIN - LISTADO PRODUCTOS
+   ========================== */
+
+.title {
+    text-align: center;
+    margin: 30px 0;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.admin-actions {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-btn {
+    display: inline-block;
+    background: #2d0c57;
+    ;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+}
+
+.admin-btn-create {
+    display: inline-block;
+    background: #1f6f3d;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+}
+
+
+.admin-btn:hover {
+    opacity: 0.9;
+}
+
+.products-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.product-admin-card {
+    text-align: center;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+
+.product-admin-card img {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    margin: auto;
+}
+
+.product-admin-card h2 {
+    color: #2d0c57;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.product-admin-card p {
+    margin: 8px 0;
+}
+
+.price-normal {
+    font-weight: 600;
+    color: #333;
+}
+
+.price-sale {
+    color: #d63384;
+    font-weight: bold;
+}
+
+.presentation-badge {
+    display: inline-block;
+    background: #ede7ff;
+    color: #2d0c57;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.admin-card-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.admin-btn-delete {
+    background: #dc3545;
+}
+
+.admin-btn-delete:hover {
+    opacity: 0.9;
+}
+
+p.text-sm.text-gray-700 {
+    display: none;
+}
+
+.swal-rounded {
+    border-radius: 14px !important;
+}
+
+.btn-back {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    font-weight: 700;
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    color: #374151;
 }

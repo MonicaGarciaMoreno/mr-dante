@@ -1,119 +1,81 @@
-<h1>Editar Producto</h1>
+@extends('layouts.admin')
 
-<form action="{{ route('products.update', $product->id) }}" method="POST">
+@section('content')
+
+<h1 class="title">Editar Producto</h1>
+
+<form action="{{ route('products.update', $product->id) }}" method="POST" class="admin-form">
 
     @csrf
     @method('PUT')
 
-    <div>
-        <label>Nombre</label>
-        <br>
+    <div class="form-grid">
 
-        <input
-            type="text"
-            name="name"
-            value="{{ $product->name }}"
-            required>
-    </div>
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="name" value="{{ $product->name }}" required>
+        </div>
 
-    <br>
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="number" name="price" step="0.01" value="{{ $product->price }}" required>
+        </div>
 
-    <div>
-        <label>Descripción</label>
-        <br>
+        <div class="form-group">
+            <label>Precio con descuento</label>
+            <input type="number" name="sale_price" step="0.01" value="{{ $product->sale_price }}">
+        </div>
 
-        <textarea
-            name="description"
-            rows="5">{{ $product->description }}</textarea>
-    </div>
+        <div class="form-group">
+            <label>Presentación</label>
+            <input type="text" name="presentation" value="{{ $product->presentation }}">
+        </div>
 
-    <br>
+        <div class="form-group">
+            <label>Tipo Mascota</label>
+            <select name="pet_type" required>
+                <option value="">Seleccione</option>
+                <option value="dog" {{ $product->pet_type == 'dog' ? 'selected' : '' }}>Perro</option>
+                <option value="cat" {{ $product->pet_type == 'cat' ? 'selected' : '' }}>Gato</option>
+            </select>
+        </div>
 
-    <div>
-        <label>Tipo Mascota</label>
-        <br>
+        <div class="form-group">
+            <label>Categoría</label>
+            <select name="category_id" required>
+                <option value="">Seleccione</option>
+                <option value="1" {{ $product->category_id == 1 ? 'selected' : '' }}>Alimentos</option>
+                <option value="2" {{ $product->category_id == 2 ? 'selected' : '' }}>Aseo</option>
+                <option value="3" {{ $product->category_id == 3 ? 'selected' : '' }}>Accesorios</option>
+                <option value="4" {{ $product->category_id == 4 ? 'selected' : '' }}>Medicina</option>
+            </select>
+        </div>
 
-        <select name="pet_type" required>
+        <div class="form-group full">
+            <label>Descripción</label>
+            <textarea name="description" rows="3">{{ $product->description }}</textarea>
+        </div>
 
-            <option value="dog"
-                {{ $product->pet_type == 'dog' ? 'selected' : '' }}>
-                Perro
-            </option>
+        <div class="form-group full">
+            <label>Imagen</label>
+            <input type="text" name="image" value="{{ $product->image }}">
+        </div>
 
-            <option value="cat"
-                {{ $product->pet_type == 'cat' ? 'selected' : '' }}>
-                Gato
-            </option>
-
-        </select>
-    </div>
-
-    <br>
-
-    <div>
-        <label>Categoría</label>
-        <br>
-
-        <select name="category_id" required>
-
-            <option value="1"
-                {{ $product->category_id == 1 ? 'selected' : '' }}>
-                Alimentos
-            </option>
-
-            <option value="2"
-                {{ $product->category_id == 2 ? 'selected' : '' }}>
-                Aseo
-            </option>
-
-            <option value="3"
-                {{ $product->category_id == 3 ? 'selected' : '' }}>
-                Accesorios
-            </option>
-
-            <option value="4"
-                {{ $product->category_id == 4 ? 'selected' : '' }}>
-                Medicina
-            </option>
-
-        </select>
+        <div class="form-group checkbox">
+            <label>
+                <input type="checkbox" name="is_featured" value="1" {{ $product->is_featured ? 'checked' : '' }}>
+                Producto destacado
+            </label>
+        </div>
 
     </div>
 
-    <br>
+    <button type="submit">Actualizar Producto</button>
 
-    <div>
-        <label>Imagen</label>
-        <br>
-
-        <input
-            type="text"
-            name="image"
-            value="{{ $product->image }}">
-    </div>
-
-    <br>
-
-    <div>
-
-        <label>
-
-            <input
-                type="checkbox"
-                name="is_featured"
-                value="1"
-                {{ $product->is_featured ? 'checked' : '' }}>
-
-            Producto destacado
-
-        </label>
-
-    </div>
-
-    <br>
-
-    <button type="submit">
-        Actualizar Producto
-    </button>
+    <a href="{{ route('products.index') }}" class="btn-back">
+        Cancelar
+    </a>
 
 </form>
+
+@endsection

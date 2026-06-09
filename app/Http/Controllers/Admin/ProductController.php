@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate(6);
 
         return view('admin.products.index', compact('products'));
     }
@@ -34,6 +34,9 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'sale_price' => 'nullable|numeric|min:0',
+            'presentation' => 'nullable|string|max:255',
             'pet_type' => 'required|in:dog,cat',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|string|max:255',
@@ -42,13 +45,13 @@ class ProductController extends Controller
         Product::create([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
+            'price' => $validated['price'],
+            'sale_price' => $validated['sale_price'] ?? null,
+            'presentation' => $validated['presentation'] ?? null,
             'pet_type' => $validated['pet_type'],
             'category_id' => $validated['category_id'],
             'image' => $validated['image'] ?? null,
             'is_featured' => $request->has('is_featured'),
-
-            'price' => 0,
-            'sale_price' => null,
         ]);
 
         return redirect()
@@ -80,6 +83,9 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'sale_price' => 'nullable|numeric|min:0',
+            'presentation' => 'nullable|string|max:255',
             'pet_type' => 'required|in:dog,cat',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|string|max:255',
@@ -88,6 +94,9 @@ class ProductController extends Controller
         $product->update([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
+            'price' => $validated['price'],
+            'sale_price' => $validated['sale_price'] ?? null,
+            'presentation' => $validated['presentation'] ?? null,
             'pet_type' => $validated['pet_type'],
             'category_id' => $validated['category_id'],
             'image' => $validated['image'] ?? null,

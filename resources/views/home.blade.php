@@ -13,7 +13,7 @@
 
 <section class="fade-in">
 
-    <h2 class="categoria-titulo">Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h2>
+    <h1 class="categoria-titulo title">Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h1>
 
     <div class="categorias-grid">
 
@@ -47,7 +47,7 @@
 {{-- ⭐ Productos destacados --}}
 <section class="home-destacados fade-in">
 
-    <h2>Productos destacados</h2>
+    <h1 class="title">Productos destacados</h1>
 
     <div class="productos-grid">
         @foreach($featuredProducts as $product)

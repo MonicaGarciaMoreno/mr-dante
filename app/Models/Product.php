@@ -11,6 +11,7 @@ class Product extends Model
         'description',
         'price',
         'sale_price',
+        'presentation',
         'is_featured',
         'pet_type',
         'category_id',
@@ -22,9 +23,4 @@ class Product extends Model
         'sale_price' => 'decimal:2',
         'is_featured' => 'boolean',
     ];
-
-    public function variants()
-    {
-        return $this->hasMany(ProductVariant::class);
-    }
 }

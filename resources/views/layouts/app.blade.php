@@ -65,7 +65,7 @@
             @endguest
 
             @auth
-            <a href="{{ route('dashboard') }}" class="login-btn">
+            <a href="{{ url('/admin/products') }}" class="login-btn">
                 Mi cuenta
             </a>
 
