@@ -705,6 +705,10 @@ p {
     letter-spacing: 0.5px;
 }
 
+.title1 {
+    font-weight: 500;
+}
+
 .admin-actions {
     text-align: center;
     margin-bottom: 30px;

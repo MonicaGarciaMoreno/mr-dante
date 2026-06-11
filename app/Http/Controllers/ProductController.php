@@ -9,10 +9,11 @@ class ProductController extends Controller
 {
     public function index($pet, $category)
     {
-        $products = Product::with('variants')
-            ->where('pet_type', $pet)
+        $products = Product::where('pet_type', $pet)
             ->where('category_id', $category)
-            ->get();
+            ->latest()
+            ->paginate(6)
+            ->withQueryString();
 
         return view('products.index', compact('products', 'pet', 'category'));
     }
@@ -30,8 +31,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::with('variants')->findOrFail($id);
-
+        $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
 }

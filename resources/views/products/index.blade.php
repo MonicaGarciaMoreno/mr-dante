@@ -11,7 +11,7 @@ $categories = [
 ];
 @endphp
 
-<h2 class="categoria-titulo">
+<h2 class="categoria-titulo title">
     {{ $categories[$category] ?? 'Productos' }}
     para {{ $pet == 'dog' ? 'perros 🐶' : 'gatos 🐱' }}
 </h2>
@@ -28,13 +28,12 @@ $categories = [
 
         <p>{{ $product->description }}</p>
 
-        <strong>Tamaños:</strong>
-
-        <ul>
-            @foreach ($product->variants as $variant)
-            <li>{{ $variant->size }}</li>
-            @endforeach
-        </ul>
+        @if($product->presentation)
+        <p>
+            <strong>Presentación:</strong>
+            {{ $product->presentation }}
+        </p>
+        @endif
 
         <button onclick="window.location.href='/producto/{{ $product->id }}'">
             Ver producto
@@ -47,6 +46,21 @@ $categories = [
     <p>No hay productos disponibles en esta categoría.</p>
 
     @endforelse
+
+</div>
+
+<div class="flex flex-col items-center text-center gap-3 mt-10">
+
+    {{-- PAGINACIÓN ARRIBA --}}
+    <div>
+        {{ $products->links() }}
+    </div>
+
+    {{-- TEXTO ABAJO --}}
+    <div class="text-sm text-gray-600">
+        Mostrando {{ $products->firstItem() }} a {{ $products->lastItem() }}
+        de {{ $products->total() }} resultados
+    </div>
 
 </div>
 

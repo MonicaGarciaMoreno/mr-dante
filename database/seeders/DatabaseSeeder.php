@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
         // Ejecutar seeders
         $this->call([
             CategorySeeder::class,
-            ProductSeeder::class,
-            ProductVariantSeeder::class,
         ]);
 
         // Usuario de prueba

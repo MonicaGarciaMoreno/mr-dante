@@ -94,7 +94,7 @@
                 <img src="{{ asset('images/cat-banner.png') }}" alt="gato">
 
                 <div class="banner-text">
-                    <h1>SEÑOR DANTE</h1>
+                    <h1 class="title1">SEÑOR DANTE</h1>
                     <p>¡Todo lo que necesita tu mascota!</p>
                 </div>
 
@@ -105,7 +105,7 @@
                 <img src="{{ asset('images/payment-method.png') }}" alt="pago">
 
                 <div class="banner-text">
-                    <h1>Paga como prefieras</h1>
+                    <h1 class="title1">Paga como prefieras</h1>
                     <p>Paga en línea o contraentrega al recibir tu pedido</p>
                 </div>
 
@@ -116,7 +116,7 @@
                 <img src="{{ asset('images/fast-delivery.png') }}" alt="domicilios">
 
                 <div class="banner-text">
-                    <h1>Domicilios en Cali</h1>
+                    <h1 class="title1">Domicilios en Cali</h1>
                     <p>Enviamos a toda la ciudad</p>
                 </div>
 
