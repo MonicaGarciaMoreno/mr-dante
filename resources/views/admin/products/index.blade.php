@@ -3,22 +3,6 @@
 @section('content')
 
 <h1 class="title">
-    ¿Deseas agregar un nuevo producto?
-</h1>
-
-<div class="admin-actions">
-
-    <a
-        href="{{ route('products.create') }}"
-        class="admin-btn-create">
-
-        Crear Producto
-
-    </a>
-
-</div>
-
-<h1 class="title">
     Gestiona los productos existentes
 </h1>
 
@@ -101,6 +85,23 @@
     </div>
 
     @if($loop->last)
+</div>
+
+
+<h1 class="title">
+    ¿Deseas agregar un nuevo producto?
+</h1>
+
+<div class="admin-actions">
+
+    <a
+        href="{{ route('products.create') }}"
+        class="admin-btn-create">
+
+        Crear Producto
+
+    </a>
+
 </div>
 @endif
 

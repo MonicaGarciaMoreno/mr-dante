@@ -38,9 +38,21 @@
             </div>
 
             <div>
-                <button class="btn-comprar">
-                    Agregar al carrito
-                </button>
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+
+                    @csrf
+
+                    <input
+                        type="hidden"
+                        name="quantity"
+                        id="quantity-input"
+                        value="1">
+
+                    <button type="submit" class="btn-comprar">
+                        Agregar al carrito
+                    </button>
+
+                </form>
             </div>
 
             <div class="detalle-descripcion-box">
@@ -62,18 +74,21 @@
     const decreaseBtn = document.getElementById('decrease-btn');
     const increaseBtn = document.getElementById('increase-btn');
     const quantityValue = document.getElementById('quantity-value');
+    const quantityInput = document.getElementById('quantity-input');
 
     let quantity = 1;
 
     increaseBtn.addEventListener('click', () => {
         quantity++;
         quantityValue.textContent = quantity;
+        quantityInput.value = quantity;
     });
 
     decreaseBtn.addEventListener('click', () => {
         if (quantity > 1) {
             quantity--;
             quantityValue.textContent = quantity;
+            quantityInput.value = quantity;
         }
     });
 </script>

@@ -65,7 +65,7 @@
             @endguest
 
             @auth
-            <a href="{{ url('/admin/products') }}" class="login-btn">
+            <a href="{{ route('dashboard') }}" class="login-btn">
                 Mi cuenta
             </a>
 
@@ -78,7 +78,27 @@
             </form>
             @endauth
 
-            <span class="cart">🛒</span>
+            <a href="{{ route('cart.index') }}" class="cart-link">
+
+                🛒
+
+                @php
+                $cartCount = 0;
+
+                if(session('cart')) {
+                foreach(session('cart') as $item) {
+                $cartCount += $item['quantity'];
+                }
+                }
+                @endphp
+
+                @if($cartCount > 0)
+                <span class="cart-badge">
+                    {{ $cartCount }}
+                </span>
+                @endif
+
+            </a>
 
         </div>
 

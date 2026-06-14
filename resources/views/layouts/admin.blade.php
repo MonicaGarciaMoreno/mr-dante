@@ -78,9 +78,6 @@
             </form>
 
             @endauth
-
-            <span class="cart">🛒</span>
-
         </div>
 
     </div>

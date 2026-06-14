@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,43 @@ Route::get('/productos/{pet}/{category}', [ProductController::class, 'index']);
 Route::get('/producto/{id}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/buscar-productos', [ProductController::class, 'search'])->name('products.search');
+
+/*
+|--------------------------------------------------------------------------
+| CARRITO
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/cart/add/{id}', [CartController::class, 'add'])
+    ->name('cart.add');
+
+Route::get('/cart', [CartController::class, 'index'])
+    ->name('cart.index');
+
+Route::post('/cart/remove/{id}', [CartController::class, 'remove'])
+    ->name('cart.remove');
+
+
+/*
+|--------------------------------------------------------------------------
+| CHECKOUT
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/checkout', function () {
+    return view('cart.checkout');
+})->name('checkout.index');
+
+Route::post('/checkout', function () {
+
+    session()->forget('cart');
+
+    return redirect()->route('checkout.success');
+})->name('checkout.store');
+
+Route::get('/checkout/success', function () {
+    return view('cart.confirmation');
+})->name('checkout.success');
 
 /*
 |--------------------------------------------------------------------------
