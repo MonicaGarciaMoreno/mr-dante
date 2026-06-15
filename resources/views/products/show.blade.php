@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="detalle-producto-container">
+<div class="detalle-producto-container fade-in">
 
     <div class="detalle-producto-card">
 

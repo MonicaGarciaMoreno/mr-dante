@@ -2,59 +2,53 @@
 
 @section('content')
 
-<div class="cart-page">
+<div class="cart-page fade-in">
 
-    <h1 class="cart-page-title">Mi carrito</h1>
+    <h1 class="title-cart">Mi carrito</h1>
 
     @if(count($cart) > 0)
 
     @php
-    $total = 0;
+        $total = 0;
     @endphp
 
     <div class="cart-table-header">
-
-        <div>Producto</div>
+        <div style="padding-left: 100px;">Producto</div>
         <div>Precio</div>
         <div>Cantidad</div>
         <div>Total</div>
-
     </div>
 
     @foreach($cart as $item)
 
     @php
-    $subtotal = $item['price'] * $item['quantity'];
-    $total += $subtotal;
+        $subtotal = $item['price'] * $item['quantity'];
+        $total += $subtotal;
     @endphp
 
     <div class="cart-row">
 
         <div class="cart-product">
 
+            <h3>{{ $item['name'] }}</h3>
+
             <img
                 src="{{ asset('images/products/' . $item['image']) }}"
                 alt="{{ $item['name'] }}">
 
-            <div>
+            <form
+                action="{{ route('cart.remove', $item['id']) }}"
+                method="POST">
 
-                <h3>{{ $item['name'] }}</h3>
+                @csrf
 
-                <form
-                    action="{{ route('cart.remove', $item['id']) }}"
-                    method="POST">
+                <button
+                    type="submit"
+                    class="cart-remove-btn">
+                    Eliminar
+                </button>
 
-                    @csrf
-
-                    <button
-                        type="submit"
-                        class="cart-remove-link">
-                        Eliminar
-                    </button>
-
-                </form>
-
-            </div>
+            </form>
 
         </div>
 

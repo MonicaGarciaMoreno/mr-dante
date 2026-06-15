@@ -4,7 +4,7 @@
 
 <div class="checkout-success">
 
-    <h1>¡Gracias por tu compra!</h1>
+    <h1 class="title-checkout">¡Gracias por tu compra!</h1>
 
     <p>
         Tu pedido fue registrado exitosamente.

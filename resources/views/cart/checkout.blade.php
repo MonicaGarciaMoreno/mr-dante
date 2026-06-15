@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="checkout-container">
+<div class="checkout-container fade-in">
 
-    <h1>Finalizar compra</h1>
+    <h1 class="title-checkout">Finalizar compra</h1>
 
     <form
         action="{{ route('checkout.store') }}"
@@ -26,11 +26,6 @@
         <div class="form-group">
             <label>Dirección</label>
             <input type="text" name="address" required>
-        </div>
-
-        <div class="form-group">
-            <label>Ciudad</label>
-            <input type="text" name="city" required>
         </div>
 
         <button type="submit" class="btn-comprar">

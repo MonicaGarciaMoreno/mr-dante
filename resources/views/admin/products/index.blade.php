@@ -6,6 +6,50 @@
     Gestiona los productos existentes
 </h1>
 
+<div class="admin-filters">
+
+    <form method="GET" action="{{ route('products.index') }}">
+
+        <select name="pet_type">
+            <option value="">Todas las mascotas</option>
+
+            <option value="dog" {{ request('pet_type') == 'dog' ? 'selected' : '' }}>
+                Perros 🐶
+            </option>
+
+            <option value="cat" {{ request('pet_type') == 'cat' ? 'selected' : '' }}>
+                Gatos 🐱
+            </option>
+        </select>
+
+        <select name="category_id">
+            <option value="">Todas las categorías</option>
+
+            <option value="1" {{ request('category_id') == '1' ? 'selected' : '' }}>
+                Alimentos
+            </option>
+
+            <option value="2" {{ request('category_id') == '2' ? 'selected' : '' }}>
+                Aseo
+            </option>
+
+            <option value="3" {{ request('category_id') == '3' ? 'selected' : '' }}>
+                Accesorios
+            </option>
+
+            <option value="4" {{ request('category_id') == '4' ? 'selected' : '' }}>
+                Medicinas
+            </option>
+        </select>
+
+        <button type="submit" class="admin-btn">
+            Filtrar
+        </button>
+
+    </form>
+
+</div>
+
 @forelse($products as $product)
 
 @if($loop->first)

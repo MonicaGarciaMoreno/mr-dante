@@ -22,18 +22,31 @@ $categories = [
 
     <div class="producto-card">
 
-        <img src="{{ asset('images/products/' . $product->image) }}">
+        <img
+            src="{{ asset('images/products/' . $product->image) }}"
+            alt="{{ $product->name }}">
 
-        <h3>{{ $product->name }}</h3>
+        <p>{{ $product->name }}</p>
 
-        <p>{{ $product->description }}</p>
+        <p class="precio">
 
-        @if($product->presentation)
-        <p>
-            <strong>Presentación:</strong>
-            {{ $product->presentation }}
+            @if($product->sale_price)
+
+            <span style="text-decoration: line-through; color: #888;">
+                ${{ number_format($product->price, 0, ',', '.') }}
+            </span>
+
+            <br>
+
+            ${{ number_format($product->sale_price, 0, ',', '.') }}
+
+            @else
+
+            ${{ number_format($product->price, 0, ',', '.') }}
+
+            @endif
+
         </p>
-        @endif
 
         <button onclick="window.location.href='/producto/{{ $product->id }}'">
             Ver producto
