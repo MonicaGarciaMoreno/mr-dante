@@ -60,13 +60,13 @@
                 <p>{{ $product->description }}</p>
             </div>
 
-            <a href="{{ url()->previous() }}" class="btn-volver">
-                Volver
-            </a>
-
         </div>
 
     </div>
+
+    <a href="{{ url()->previous() }}" class="btn-volver">
+        Volver
+    </a>
 
 </div>
 

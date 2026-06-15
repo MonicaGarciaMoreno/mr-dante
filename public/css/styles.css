@@ -328,6 +328,19 @@
     animation: fadeInUp 0.6s ease forwards;
 }
 
+.fade-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -572,10 +585,11 @@ p {
 
 .btn-volver {
     display: block;
-    margin-top: 12px;
+    margin-top: 30px;
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-volver:hover {
@@ -735,25 +749,6 @@ p {
     text-align: center;
 }
 
-.admin-btn-create {
-    display: inline-block;
-    background: #1f6f3d;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    min-width: 120px;
-    text-align: center;
-}
-
-
-.admin-btn:hover {
-    opacity: 0.9;
-}
-
 .products-admin-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -782,10 +777,12 @@ p {
     color: #2d0c57;
     margin-bottom: 10px;
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .product-admin-card p {
     margin: 8px 0;
+    text-align: start;
 }
 
 .price-normal {
@@ -1144,3 +1141,71 @@ p.text-sm.text-gray-700 {
     outline: none;
     border-color: #8e79c6;
 }
+
+.title-admin {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+.admin-btn-create {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    background: #1f6f3d;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(31, 111, 61, 0.25);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
+}
+
+.admin-btn-create:hover {
+    background: #27874a;
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 10px 24px rgba(31, 111, 61, 0.4);
+}
+
+.admin-btn-create:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Efecto de brillo */
+
+.admin-btn-create::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    transition: left 0.6s ease;
+}
+
+.admin-btn-create:hover::after {
+    left: 170%;
+}
+
+
+

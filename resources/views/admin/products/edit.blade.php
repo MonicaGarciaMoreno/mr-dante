@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h1 class="title">Editar Producto</h1>
+<h1 class="title fade-in">Editar Producto</h1>
 
-<form action="{{ route('products.update', $product->id) }}" method="POST" class="admin-form">
+<form action="{{ route('products.update', $product->id) }}" method="POST" class="admin-form fade-in">
 
     @csrf
     @method('PUT')

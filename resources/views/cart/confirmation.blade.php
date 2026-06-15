@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="checkout-success">
+<div class="checkout-success fade-in">
 
-    <h1 class="title-checkout">¡Gracias por tu compra!</h1>
+    <h1 class="title-checkout" style="color: #2d0c57;">¡Gracias por tu compra!</h1>
 
     <p>
         Tu pedido fue registrado exitosamente.

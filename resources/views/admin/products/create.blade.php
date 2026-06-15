@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h1 class="title">Crear Producto</h1>
+<h1 class="title fade-in">Crear Producto</h1>
 
-<form action="{{ route('products.store') }}" method="POST" class="admin-form">
+<form action="{{ route('products.store') }}" method="POST" class="admin-form fade-in">
     @csrf
 
     <div class="form-grid">

@@ -11,8 +11,7 @@ class HomeController extends Controller
     {
         $featuredProducts = Product::where('is_featured', true)
             ->latest()
-            ->take(6)
-            ->get();
+            ->paginate(6);
 
         return view('home', compact('pet', 'featuredProducts'));
     }

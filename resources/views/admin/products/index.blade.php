@@ -2,6 +2,12 @@
 
 @section('content')
 
+<h1 class="title-admin" style="color: #2d0c57;
+;">
+    ¡Bienvenido al panel de administración!
+
+</h1>
+
 <h1 class="title">
     Gestiona los productos existentes
 </h1>
@@ -53,7 +59,7 @@
 @forelse($products as $product)
 
 @if($loop->first)
-<div class="products-admin-grid">
+<div class="products-admin-grid fade-in ">
     @endif
 
     <div class="product-admin-card">
@@ -132,21 +138,24 @@
 </div>
 
 
-<h1 class="title">
-    ¿Deseas agregar un nuevo producto?
-</h1>
+<div class="cart-summary-box">
+    <h1 class="title">
+        ¿Deseas agregar un nuevo producto?
+    </h1>
 
-<div class="admin-actions">
+    <div class="admin-actions">
 
-    <a
-        href="{{ route('products.create') }}"
-        class="admin-btn-create">
+        <a
+            href="{{ route('products.create') }}"
+            class="admin-btn-create">
 
-        Crear Producto
+            Crear Producto
 
-    </a>
+        </a>
 
+    </div>
 </div>
+
 @endif
 
 @empty

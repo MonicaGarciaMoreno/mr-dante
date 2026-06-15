@@ -11,7 +11,7 @@
 {{-- 🧱 Categorías --}}
 @if($pet)
 
-<section class="fade-in">
+<section class="fade-down">
 
     <h1 class="categoria-titulo title">Categorías para {{ $pet == 'dog' ? 'perros' : 'gatos' }}</h1>
 
@@ -54,7 +54,7 @@
         <div class="producto-card">
             <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}">
 
-            <p>{{ $product->name }}</p>
+            <p style="font-weight: 600;">{{ $product->name }}</p>
 
             <p class="precio">
                 <span style="text-decoration: line-through; color: #888;">
@@ -64,6 +64,13 @@
                 ${{ number_format($product->sale_price, 0, ',', '.') }}
             </p>
 
+            @if($product->presentation)
+            <p class="detalle-tamano-label" style="margin-bottom: 20px;">
+                Presentación:
+                <span>{{ $product->presentation }}</span>
+            </p>
+            @endif
+
             <button onclick="window.location.href='/producto/{{ $product->id }}'">
                 Ver producto
             </button>
@@ -72,24 +79,36 @@
 
     </div>
 
-</section>
+    <div class="flex flex-col items-center text-center gap-3 mt-10">
 
+        {{ $featuredProducts->links() }}
 
-{{-- 📝 Blog --}}
-<section class="home-blog">
-
-    <div class="blog-header">
-
-        <img src="/images/icon-blog.png" class="blog-icon">
-
-        <h2>Blog</h2>
-
-        <p class="blog-subtitulo">
-            ¡Consejos y curiosidades sobre tus mascotas!
-        </p>
+        Mostrando {{ $featuredProducts->firstItem() }}
+        a {{ $featuredProducts->lastItem() }}
+        de {{ $featuredProducts->total() }} resultados
 
     </div>
 
 </section>
+
+{{-- 📝 Blog --}}
+<section class="home-blog">
+
+    <a href="https://blog.puppis.com.co/" target="_blank" rel="noopener noreferrer" class="blog-link">
+        <div class="blog-header">
+
+            <img src="/images/icon-blog.png" class="blog-icon" alt="Ir al blog de Puppis">
+
+            <h2>Blog</h2>
+
+            <p class="blog-subtitulo">
+                ¡Consejos y curiosidades sobre tus mascotas!
+            </p>
+
+        </div>
+    </a>
+
+</section>
+
 
 @endsection

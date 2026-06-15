@@ -11,12 +11,12 @@ $categories = [
 ];
 @endphp
 
-<h2 class="categoria-titulo title">
+<h2 class="categoria-titulo title fade-in">
     {{ $categories[$category] ?? 'Productos' }}
     para {{ $pet == 'dog' ? 'perros 🐶' : 'gatos 🐱' }}
 </h2>
 
-<div class="productos-grid">
+<div class="productos-grid fade-in">
 
     @forelse ($products as $product)
 
@@ -26,7 +26,7 @@ $categories = [
             src="{{ asset('images/products/' . $product->image) }}"
             alt="{{ $product->name }}">
 
-        <p>{{ $product->name }}</p>
+        <p style="font-weight: 600;">{{ $product->name }}</p>
 
         <p class="precio">
 
@@ -48,6 +48,14 @@ $categories = [
 
         </p>
 
+        @if($product->presentation)
+        <p class="detalle-tamano-label" style="margin-bottom: 20px;">
+            Presentación:
+            <span>{{ $product->presentation }}</span>
+        </p>
+        @endif
+
+
         <button onclick="window.location.href='/producto/{{ $product->id }}'">
             Ver producto
         </button>
@@ -61,6 +69,10 @@ $categories = [
     @endforelse
 
 </div>
+
+<a href="{{ url()->previous() }}" class="btn-volver">
+    Volver
+</a>
 
 <div class="flex flex-col items-center text-center gap-3 mt-10">
 

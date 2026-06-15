@@ -9,7 +9,7 @@
     @if(count($cart) > 0)
 
     @php
-        $total = 0;
+    $total = 0;
     @endphp
 
     <div class="cart-table-header">
@@ -22,8 +22,8 @@
     @foreach($cart as $item)
 
     @php
-        $subtotal = $item['price'] * $item['quantity'];
-        $total += $subtotal;
+    $subtotal = $item['price'] * $item['quantity'];
+    $total += $subtotal;
     @endphp
 
     <div class="cart-row">
@@ -68,7 +68,7 @@
 
     @endforeach
 
-    <div class="cart-summary-box">
+    <div class="cart-summary-box" style="margin-bottom: -30px;">
 
         <h2>Resumen del pedido</h2>
 
@@ -105,8 +105,13 @@
 
     </div>
 
+
     @endif
 
 </div>
+
+<a href="{{ url()->previous() }}" class="btn-volver">
+    Volver
+</a>
 
 @endsection
