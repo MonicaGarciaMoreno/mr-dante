@@ -74,7 +74,6 @@ El sistema utiliza una base de datos **MySQL**. Las principales tablas del proye
 - `users` → información de los usuarios registrados.
 - `categories` → categorías de productos.
 - `products` → catálogo de productos.
-- `product_variants` → variantes de los productos (por ejemplo, presentación o tamaño).
 
 Además, Laravel genera automáticamente tablas de soporte para el funcionamiento de la aplicación, entre ellas:
 
