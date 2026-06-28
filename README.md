@@ -19,18 +19,22 @@ El sistema sigue el patrón de arquitectura **MVC (Modelo – Vista – Controla
 Backend
 - PHP
 - Laravel
+- Laravel Breeze (autenticación de usuarios)
 
 Frontend
 - Blade (motor de plantillas de Laravel)
 - HTML
-- CSS
-- Bootstrap
+- CSS3
+- JavaScript
+- Vite (compilación y gestión de recursos frontend)
 
 Base de datos
 - MySQL
 
 Entorno de desarrollo
 - XAMPP
+- Node.js
+- NPM
 
 Control de versiones
 - Git
@@ -48,7 +52,6 @@ Control de versiones
 - Filtrar por categoría
 - Ver detalle de producto
 - Agregar productos al carrito
-- Modificar cantidad en el carrito
 - Eliminar productos del carrito
 
 ## Usuario
@@ -82,7 +85,6 @@ Las tablas principales del negocio son:
 El carrito de compras se gestiona mediante **sesiones del sistema**.
 
 ---
----
 
 ## ▶️ Ejecución del proyecto
 
@@ -90,6 +92,7 @@ Para ejecutar el proyecto en un entorno local es necesario contar con las siguie
 
 - PHP
 - Composer
+- Node.js y NPM
 - XAMPP o cualquier servidor que permita ejecutar MySQL
 - Laravel
 
@@ -105,13 +108,19 @@ git clone https://github.com/MonicaGarciaMoreno/mr-dante.git
 cd senor-dante
 ```
 
-### 3️⃣ Instalar dependencias
+### 3️⃣ Instalar dependencias de PHP
 
 ```bash
 composer install
 ```
 
-### 4️⃣ Configurar el archivo de entorno
+### 4️⃣ Instalar dependencias del frontend
+
+```bash
+npm install
+```
+
+### 5️⃣ Configurar el archivo de entorno
 
 Copiar el archivo de configuración de ejemplo:
 
@@ -121,7 +130,7 @@ cp .env.example .env
 
 Luego editar el archivo `.env` y configurar los datos de conexión a la base de datos según el entorno local.
 
-### 5️⃣ Ejecutar migraciones
+### 6️⃣ Ejecutar migraciones
 
 Este comando creará las tablas necesarias en la base de datos:
 
@@ -129,21 +138,30 @@ Este comando creará las tablas necesarias en la base de datos:
 php artisan migrate
 ```
 
-### 6️⃣ Iniciar el servidor de desarrollo
+### 7️⃣ Iniciar el servidor de Laravel
 
-Para ejecutar la aplicación en el entorno local se utiliza el servidor integrado de Laravel:
+En una primera terminal ejecutar:
 
 ```bash
 php artisan serve
 ```
 
-### 7️⃣ Acceder a la aplicación
+### 8️⃣ Iniciar el servidor de Vite
 
-Una vez iniciado el servidor, abrir el navegador y dirigirse a:
+En una segunda terminal ejecutar:
+
+```bash
+npm run dev
+```
+
+Este comando compila y sirve los recursos del frontend (CSS y JavaScript) durante el desarrollo. Para el correcto funcionamiento de la aplicación en entorno local, deben permanecer en ejecución tanto el servidor de Laravel como el servidor de Vite.
+
+### 9️⃣ Acceder a la aplicación
+
+Una vez iniciados ambos servidores, abrir el navegador y dirigirse a:
 
 ```
 http://127.0.0.1:8000/
 ```
 
 ---
-
