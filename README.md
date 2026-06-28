@@ -69,20 +69,25 @@ Control de versiones
 
 # 🗄️ Modelo de base de datos
 
-Tablas principales del sistema:
+El sistema utiliza una base de datos **MySQL**. Las principales tablas del proyecto son:
 
-- `users`
-- `categories`
-- `products`
+- `users` → información de los usuarios registrados.
+- `categories` → categorías de productos.
+- `products` → catálogo de productos.
+- `product_variants` → variantes de los productos (por ejemplo, presentación o tamaño).
+
+Además, Laravel genera automáticamente tablas de soporte para el funcionamiento de la aplicación, entre ellas:
+
 - `migrations`
 - `password_reset_tokens`
+- `sessions`
+- `cache`
+- `cache_locks`
+- `jobs`
+- `job_batches`
+- `failed_jobs`
 
-Las tablas principales del negocio son:
-
-- **categories**
-- **products**
-
-El carrito de compras se gestiona mediante **sesiones del sistema**.
+El carrito de compras se gestiona mediante **sesiones del sistema**, por lo que no requiere una tabla específica para almacenar los productos agregados por cada usuario.
 
 ---
 
@@ -105,7 +110,7 @@ git clone https://github.com/MonicaGarciaMoreno/mr-dante.git
 ### 2️⃣ Acceder al directorio del proyecto
 
 ```bash
-cd senor-dante
+cd mr-dante
 ```
 
 ### 3️⃣ Instalar dependencias de PHP
